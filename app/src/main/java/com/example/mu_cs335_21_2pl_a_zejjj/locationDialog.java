@@ -1,4 +1,4 @@
-package com.example.safeamigoshome;
+package com.example.mu_cs335_21_2pl_a_zejjj;
 
 
 import android.app.AlertDialog;
