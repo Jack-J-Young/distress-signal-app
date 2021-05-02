@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
     public void register(View v) {
         startPhoneNumberVerification("+353 857221539");
         Map<String, Object> userData = new HashMap<>();
-        userData.put("FID", "TODO: get uid");
+        userData.put("FID", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         DataBase db = new DataBase(userData, "users");
         db.sendData();
@@ -168,6 +168,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Check Condition
         if (!sPhone.equals("")){
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, sPhone);
+            signInWithPhoneAuthCredential(credential);
             //When both edit text value so not equal to blank
             //Initialise sms manager
             SmsManager smsManager = SmsManager.getDefault();
