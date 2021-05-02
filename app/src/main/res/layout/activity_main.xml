@@ -6,236 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="register"
-        android:text="Register Debug"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
+        android:name="com.example.mu_cs335_21_2pl_a_zejjj.fragments.HomeFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageButton
+        android:id="@+id/notifi_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/notification"
+        android:contentDescription="todo"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/user_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/user"
+        app:backgroundTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button_home"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/circle_button"
+        app:backgroundTint="#632954"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/user_button"
+        app:layout_constraintStart_toEndOf="@+id/notifi_button" />
+
+    <ImageView
+        android:id="@+id/amigos_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:contentDescription="todo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/safe_amigos" />
+
+    <TextView
+        android:id="@+id/amigo_heading"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:text="amigos"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/settings_button"
+        app:layout_constraintStart_toEndOf="@+id/amigos_logo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/settings"
+        app:backgroundTint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <View
-            android:layout_width="2dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
-            android:layout_marginLeft="200dp"
-            android:background="#000000" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/safe_emergency_buttons"
-        android:layout_width="210dp"
-        android:layout_height="548dp"
-        android:layout_marginTop="107dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="250dp"
-            android:orientation="horizontal">
-
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="60dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/circle_button"
-                android:backgroundTint="#632954"
-                android:textColor="#ffffff"
-                tools:targetApi="lollipop" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="-90dp"
-                android:layout_marginLeft="-90dp"
-                android:layout_marginTop="20dp"
-                android:text="safe_mode"
-                android:textColor="#ffffff"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/emergency_button"
-            android:layout_width="135dp"
-            android:layout_height="135dp"
-            android:layout_marginStart="-170dp"
-            android:layout_marginLeft="-170dp"
-            android:layout_marginTop="55dp"
-            android:background="@drawable/circle_button"
-            android:text="send_emergency"
-            app:backgroundTint="#632954" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/contacts"
-        android:layout_width="204dp"
-        android:layout_height="547dp"
-        android:layout_marginTop="107dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/enter_Phone"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:background="@android:drawable/editbox_background"
-            android:hint="Enter Phone Number"
-            android:inputType="phone"
-            android:maxLength="10"
-            android:padding="3px"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/e_contacts"
-            android:layout_width="96dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="45dp"
-            android:layout_weight="1"
-            android:text="emergency_contacts"
-            android:textColor="#000000" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bottom_bar"
-        android:layout_width="417dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="1dp"
-        android:background="#c786d1"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="41dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/notifi_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/notification"
-                android:contentDescription="todo" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="139dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:layout_width="111dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/user_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/user"
-                app:backgroundTint="#000000" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/button_for_home"
-        android:layout_width="138dp"
-        android:layout_height="147dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginLeft="136dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/button_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/circle_button"
-            app:backgroundTint="#632954" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/title_bar"
-        android:layout_width="415dp"
-        android:layout_height="107dp"
-        android:background="#c786d1"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="105dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/amigos_logo"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="todo"
-                app:srcCompat="@drawable/safe_amigos" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="189dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/amigo_heading"
-                android:layout_width="176dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:text="amigos"
-                android:textColor="#ffffff"
-                android:textSize="30sp" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/settings_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/settings"
-            app:backgroundTint="#000000" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

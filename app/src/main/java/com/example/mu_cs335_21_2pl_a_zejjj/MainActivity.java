@@ -82,27 +82,6 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission.ACCESS_FINE_LOCATION}, 100);
         }
 
-        btSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Check condition
-                if(ContextCompat.checkSelfPermission(MainActivity.this, permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
-                    //When permission is granted
-                    //Create Method
-
-                    sendMessage();
-                }
-                else{
-                    //When permission is not granted
-                    //Request Permission
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission.SEND_SMS}, 100);
-                }
-
-            }
-
-
-        });
-
         //Phone verif
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -149,10 +128,24 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
+    public void emergencyButton(View v) {
+        //Check condition
+        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
+            //When permission is granted
+            //Create Method
+
+            sendMessage();
+        }
+        else{
+            //When permission is not granted
+            //Request Permission
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS}, 100);
+        }
+    }
+
     public void register(View v) {
-        startPhoneNumberVerification("+353 857221539");
         Map<String, Object> userData = new HashMap<>();
-        userData.put("FID", FirebaseAuth.getInstance().getCurrentUser().getUid());
+        userData.put("FID", "aaa");
 
         DataBase db = new DataBase(userData, "users");
         db.sendData();
