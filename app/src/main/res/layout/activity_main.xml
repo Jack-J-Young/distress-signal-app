@@ -48,7 +48,7 @@
                 android:layout_height="80dp"
                 android:layout_marginBottom="0dp"
                 android:background="@drawable/notification"
-                android:contentDescription="todo" />
+                android:contentDescription="TODO" />
 
             <Space
                 android:layout_width="wrap_content"

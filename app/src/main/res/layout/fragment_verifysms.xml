@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_verifysms"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.LoginFragment">
@@ -10,8 +11,8 @@
         android:id="@+id/Register_btna"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="registerNumber"
-        android:text="Register"
+        android:onClick="checkSMS"
+        android:text="Verify"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,9 +24,20 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:ems="10"
-        android:hint="Enter Phone No."
-        android:inputType="phone"
+        android:hint="Enter SMS code"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/Register_btna"
         app:layout_constraintEnd_toEndOf="@+id/Register_btna"
         app:layout_constraintStart_toStartOf="@+id/Register_btna" />
+
+    <Button
+        android:id="@+id/resend_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Resend SMS"
+        app:layout_constraintEnd_toEndOf="@+id/Register_btna"
+        app:layout_constraintStart_toStartOf="@+id/Register_btna"
+        app:layout_constraintTop_toBottomOf="@+id/Register_btna" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
