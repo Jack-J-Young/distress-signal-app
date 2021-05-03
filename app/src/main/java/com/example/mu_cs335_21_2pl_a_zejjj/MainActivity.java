@@ -42,45 +42,12 @@ public class MainActivity extends AppCompatActivity {
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
-
-    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0;
-    EditText etPhone;
-    Button btSend;
-
-    GPSTrack gps;
-
-    double latitude;
-    double longitude;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-        //Assign Variable
-        etPhone = findViewById(R.id.enter_Phone);
-        btSend = findViewById(R.id.emergency_button);
-
-        gps = new GPSTrack(this);
-
-
-
-        latitude = gps.getLatitude();
-        longitude = gps.getLongitude();
-
-        //PERMS
-        if(ContextCompat.checkSelfPermission(MainActivity.this, permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            //When permission is granted
-            //Create Method
-
-            gps.getLocation();
-        }
-        else{
-            //When permission is not granted
-            //Request Permission
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission.ACCESS_FINE_LOCATION}, 100);
-        }
 
         //Phone verif
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -128,62 +95,12 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    public void emergencyButton(View v) {
-        //Check condition
-        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
-            //When permission is granted
-            //Create Method
-
-            sendMessage();
-        }
-        else{
-            //When permission is not granted
-            //Request Permission
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS}, 100);
-        }
-    }
-
     public void register(View v) {
         Map<String, Object> userData = new HashMap<>();
         userData.put("FID", "aaa");
 
         DataBase db = new DataBase(userData, "users");
         db.sendData();
-    }
-
-    private void sendMessage(){
-        gps.getLocation();
-        latitude = gps.getLatitude();
-        longitude = gps.getLongitude();
-        //Get values from edit text
-        String sPhone = etPhone.getText().toString().trim();
-        String sMessage = "Testing, My Location is: http://maps.google.com/?q="+ latitude +","+longitude;
-
-        //Check Condition
-        if (!sPhone.equals("")){
-            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, sPhone);
-            signInWithPhoneAuthCredential(credential);
-            //When both edit text value so not equal to blank
-            //Initialise sms manager
-            SmsManager smsManager = SmsManager.getDefault();
-
-
-
-            if(gps.canGetLocation() == true)
-            {
-                longitude = gps.getLongitude();
-                latitude = gps.getLatitude();
-
-                //Send text
-                smsManager.sendTextMessage(sPhone, null, sMessage, null, null);
-                Toast.makeText(getApplicationContext(), "SMS Sent Successfully", Toast.LENGTH_LONG).show();
-            }
-        }
-        else {
-            //When edit text value is blank
-            //Display toast
-            Toast.makeText(getApplicationContext(), "Enter Value First", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void startPhoneNumberVerification(String phoneNumber) {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B178BC"
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -11,77 +12,94 @@
         android:name="com.example.mu_cs335_21_2pl_a_zejjj.fragments.HomeFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp">
 
-    <ImageButton
-        android:id="@+id/notifi_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/notification"
-        android:contentDescription="todo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    </androidx.fragment.app.FragmentContainerView>
 
-    <Button
-        android:id="@+id/user_button"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/user"
-        app:backgroundTint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/button_home"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="8dp"
         android:layout_weight="1"
-        android:background="@drawable/circle_button"
-        app:backgroundTint="#632954"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/user_button"
-        app:layout_constraintStart_toEndOf="@+id/notifi_button" />
-
-    <ImageView
-        android:id="@+id/amigos_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:contentDescription="todo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/safe_amigos" />
-
-    <TextView
-        android:id="@+id/amigo_heading"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="8dp"
-        android:text="amigos"
-        android:textColor="#ffffff"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/settings_button"
-        app:layout_constraintStart_toEndOf="@+id/amigos_logo"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/settings_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/settings"
-        app:backgroundTint="#000000"
+        android:background="#B178BC"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_container_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/notifi_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/notification"
+                android:contentDescription="todo" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button_home"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="0"
+                android:background="@drawable/circle_button"
+                app:backgroundTint="#632954" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/user_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/user"
+                app:backgroundTint="#000000" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

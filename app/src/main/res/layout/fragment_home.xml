@@ -45,15 +45,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emergency_button" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="register"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/emergency_button"
-        app:layout_constraintStart_toStartOf="@+id/emergency_button"
-        app:layout_constraintTop_toBottomOf="@+id/switch2" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
