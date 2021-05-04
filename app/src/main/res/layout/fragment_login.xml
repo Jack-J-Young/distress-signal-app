@@ -28,4 +28,15 @@
         app:layout_constraintBottom_toTopOf="@+id/Register_btna"
         app:layout_constraintEnd_toEndOf="@+id/Register_btna"
         app:layout_constraintStart_toStartOf="@+id/Register_btna" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:onClick="checkLogin"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="@+id/Register_btna"
+        app:layout_constraintStart_toStartOf="@+id/Register_btna"
+        app:layout_constraintTop_toBottomOf="@+id/Register_btna" />
 </androidx.constraintlayout.widget.ConstraintLayout>

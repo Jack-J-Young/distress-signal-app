@@ -1,11 +1,14 @@
 package com.example.mu_cs335_21_2pl_a_zejjj;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -15,6 +18,7 @@ import androidx.navigation.Navigation;
 import com.example.mu_cs335_21_2pl_a_zejjj.fragments.VerifySMSFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
@@ -35,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private String savedNumber;
+
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
@@ -43,10 +49,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //FirebaseAuth.getInstance().signOut();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        rgPhone = this.findViewById(R.id.enter_Phone);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -94,15 +100,37 @@ public class LoginActivity extends AppCompatActivity {
                 mResendToken = token;
             }
         };
+
+    }
+
+    public void checkLogin(View v) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_mainActivity);
+        }
     }
 
     public void registerNumber(View v) {
-        //startPhoneNumberVerification(rgPhone.getText().toString().trim());
-        Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_verifySMSFragment);
+        rgPhone = (EditText) this.findViewById(R.id.phoneregis);
+        savedNumber = rgPhone.getText().toString().trim();
+        try {
+            startPhoneNumberVerification(savedNumber);
+            Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_verifySMSFragment);
+        } catch (Exception e) {
+            Snackbar.make(v, "Enter a valid phone number", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
     }
 
     public void checkSMS(View v) {
+        EditText rgSMS = (EditText) this.findViewById(R.id.smsregis);
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, rgSMS.getText().toString().trim());
+        signInWithPhoneAuthCredential(credential);
         Navigation.findNavController(v).navigate(R.id.action_verifySMSFragment_to_mainActivity);
+    }
+
+    public void resendSMS(View v) {
+        resendVerificationSMS(savedNumber,  mResendToken);
     }
 
     private void startPhoneNumberVerification(String phoneNumber) {
@@ -112,6 +140,19 @@ public class LoginActivity extends AppCompatActivity {
                         .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
                         .setActivity(this)                 // Activity (for callback binding)
                         .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
+                        .build();
+        FirebaseAuth.getInstance().getFirebaseAuthSettings().forceRecaptchaFlowForTesting(true);
+        PhoneAuthProvider.verifyPhoneNumber(options);
+    }
+
+    private void resendVerificationSMS(String phoneNumber, PhoneAuthProvider.ForceResendingToken token) {
+        PhoneAuthOptions options =
+                PhoneAuthOptions.newBuilder(mAuth)
+                        .setPhoneNumber(phoneNumber)       // Phone number to verify
+                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                        .setActivity(this)                 // Activity (for callback binding)
+                        .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
+                        .setForceResendingToken(token)
                         .build();
         FirebaseAuth.getInstance().getFirebaseAuthSettings().forceRecaptchaFlowForTesting(true);
         PhoneAuthProvider.verifyPhoneNumber(options);

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_verifySMSFragment"
             app:destination="@id/verifySMSFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
     <fragment
         android:id="@+id/verifySMSFragment"

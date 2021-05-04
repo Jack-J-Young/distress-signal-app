@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/phoneregis"
+        android:id="@+id/smsregis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -35,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:onClick="resendSMS"
         android:text="Resend SMS"
         app:layout_constraintEnd_toEndOf="@+id/Register_btna"
         app:layout_constraintStart_toStartOf="@+id/Register_btna"
