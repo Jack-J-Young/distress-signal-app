@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c786d1"
+    tools:context=".userRegister">
+    <LinearLayout
+        android:layout_width="393dp"
+        android:layout_height="709dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="11dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="350dp"
+            android:layout_height="550dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginLeft="20dp"
+            android:background="#ffffff"
+            android:layout_marginStart="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/fnameInp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="First Name"
+                    android:textSize="25sp"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="95dp"
+                    android:layout_marginStart="10dp" />
+                <EditText
+                    android:id="@+id/enter_fname"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="Joe"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:autofillHints="" />
+                <TextView
+                    android:id="@+id/snameInp"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Surname"
+                    android:textSize="25sp"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp" />
+                <EditText
+                    android:id="@+id/enter_sname"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="Bloggs"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:autofillHints="" />
+                <TextView
+                    android:id="@+id/mobileInp"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile Number"
+                    android:textSize="25sp"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp" />
+                <EditText
+                    android:id="@+id/enter_mobile"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="Type in Mobile"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:autofillHints="" />
+                <TextView
+                    android:id="@+id/passwordInp"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Enter Password"
+                    android:textSize="25sp"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp" />
+                <EditText
+                    android:id="@+id/enter_password"
+                    android:layout_width="280dp"
+                    android:inputType="textPassword"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Type in Password"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:autofillHints="" />
+                <TextView
+                    android:id="@+id/repasswordInp"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="Re-Enter Password"
+                    android:textSize="25sp"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp" />
+                <EditText
+                    android:id="@+id/reenter_password"
+                    android:layout_width="280dp"
+                    android:inputType="textPassword"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Re-Enter Password"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:autofillHints="" />
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="Select Gender"
+                    android:textSize="25sp"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp" />
+
+                <RadioGroup
+                    android:id="@+id/enter_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp">
+
+                    <RadioButton
+                        android:id="@+id/femalebutton"
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginLeft="150dp"
+                        android:text="Female" />
+
+                    <RadioButton
+                        android:id="@+id/malebutton"
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="-20dp"
+                        android:text="Male" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/dob"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="Date of Birth"
+                    android:textSize="25sp"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp" />
+                <TextView
+                    android:id="@+id/select_dob"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Select Date of Birth"
+                    android:textSize="25sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp" />
+
+                <Button
+                    android:id="@+id/register"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="100dp"
+                    android:text="Register"
+                    android:layout_marginStart="100dp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:layout_marginTop="-625dp"
+            android:layout_marginLeft="120dp"
+            android:background="@drawable/circle_button"
+            android:backgroundTint="#ffffff"
+            android:layout_marginStart="120dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/safe_amigos"
+                android:contentDescription="todo" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
