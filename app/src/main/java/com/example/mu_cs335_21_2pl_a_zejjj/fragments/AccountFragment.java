@@ -126,4 +126,38 @@ public class AccountFragment extends Fragment {
 
         return v;
     }
+
+    public void updateList(View v) {
+        String uid = "";
+        try {
+            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        } catch (Exception e) {
+            uid = "aBcDeFgH1234";
+        }
+        DocumentReference document = FirebaseFirestore.getInstance().collection("users").document(uid);
+
+        document.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                String uid = "";
+                try {
+                    uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                } catch (Exception e) {
+                    uid = "aBcDeFgH1234";
+                }
+                if (task.isSuccessful()) {
+                    DocumentSnapshot snap_document = task.getResult();
+                    if (snap_document.exists()) {
+                        Map<String, Object> data = snap_document.getData();
+                        if (data.containsKey("contacts")) {
+                            List<String> contacts = (List<String>) data.get("contacts");
+                            na = new NumberAdapter(contacts);
+                            rv.setAdapter(na);
+
+                        }
+                    }
+                }
+            }
+        });
+    }
 }

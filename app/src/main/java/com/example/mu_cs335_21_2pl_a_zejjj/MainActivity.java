@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.solver.widgets.ConstraintHorizontalLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,6 +23,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.example.mu_cs335_21_2pl_a_zejjj.classes.DBManager;
+import com.example.mu_cs335_21_2pl_a_zejjj.fragments.AccountFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -92,13 +94,13 @@ public class MainActivity extends AppCompatActivity {
                             String number = ((EditText) findViewById(R.id.addcontact)).getText().toString().trim();
                             contacts.add(number);
                             db.db.collection("users").document(uid).update("contacts", contacts);
+                            AccountFragment frag = (AccountFragment) FragmentManager.findFragment(v);
+                            frag.updateList(v);
                         }
                     }
                 }
             }
         });
-
-
     }
 
     public void addxml(View v) {
