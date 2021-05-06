@@ -2,6 +2,7 @@ package com.example.mu_cs335_21_2pl_a_zejjj.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,9 +10,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.mu_cs335_21_2pl_a_zejjj.NumberAdapter;
 import com.example.mu_cs335_21_2pl_a_zejjj.R;
+import com.example.mu_cs335_21_2pl_a_zejjj.classes.DBManager;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,8 +91,39 @@ public class AccountFragment extends Fragment {
         lm = new LinearLayoutManager(getContext());
 
         rv.setLayoutManager(lm);
-        na = new NumberAdapter();
-        rv.setAdapter(na);
+
+        String uid = "";
+        try {
+            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        } catch (Exception e) {
+            uid = "aBcDeFgH1234";
+        }
+        DocumentReference document = FirebaseFirestore.getInstance().collection("users").document(uid);
+
+        document.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                String uid = "";
+                try {
+                    uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                } catch (Exception e) {
+                    uid = "aBcDeFgH1234";
+                }
+                if (task.isSuccessful()) {
+                    DocumentSnapshot snap_document = task.getResult();
+                    if (snap_document.exists()) {
+                        Map<String, Object> data = snap_document.getData();
+                        if (data.containsKey("contacts")) {
+                            List<String> contacts = (List<String>) data.get("contacts");
+                            na = new NumberAdapter(contacts);
+                            rv.setAdapter(na);
+
+                        }
+                    }
+                }
+            }
+        });
+
         return v;
     }
 }
