@@ -3,11 +3,14 @@ package com.example.mu_cs335_21_2pl_a_zejjj.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mu_cs335_21_2pl_a_zejjj.NumberAdapter;
 import com.example.mu_cs335_21_2pl_a_zejjj.R;
 
 /**
@@ -16,6 +19,10 @@ import com.example.mu_cs335_21_2pl_a_zejjj.R;
  * create an instance of this fragment.
  */
 public class AccountFragment extends Fragment {
+
+    RecyclerView rv;
+    RecyclerView.LayoutManager lm;
+    NumberAdapter na;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,12 +62,23 @@ public class AccountFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_account, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        rv = v.findViewById(R.id.rv_1);
+        rv.setHasFixedSize(true);
+
+        lm = new LinearLayoutManager(getContext());
+
+        rv.setLayoutManager(lm);
+        na = new NumberAdapter();
+        rv.setAdapter(na);
+        return v;
     }
 }
