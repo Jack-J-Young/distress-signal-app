@@ -2,39 +2,25 @@ package com.example.mu_cs335_21_2pl_a_zejjj;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.solver.widgets.ConstraintHorizontalLayout;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import com.example.mu_cs335_21_2pl_a_zejjj.classes.DBManager;
-import com.example.mu_cs335_21_2pl_a_zejjj.fragments.AccountFragment;
+import com.example.mu_cs335_21_2pl_a_zejjj.fragments.ContactsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.installations.remote.TokenResult;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -53,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navView = findViewById(R.id.nav_home);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_notifications, R.id.navigation_home, R.id.navigation_account)
+                R.id.navigation_account, R.id.navigation_home, R.id.navigation_contacts)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -94,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             String number = ((EditText) findViewById(R.id.addcontact)).getText().toString().trim();
                             contacts.add(number);
                             db.db.collection("users").document(uid).update("contacts", contacts);
-                            AccountFragment frag = (AccountFragment) FragmentManager.findFragment(v);
+                            ContactsFragment frag = (ContactsFragment) FragmentManager.findFragment(v);
                             frag.updateList(v);
                         }
                     }

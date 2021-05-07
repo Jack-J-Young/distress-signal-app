@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/notification"
-        android:title="Notifications" />
+        android:id="@+id/navigation_account"
+        android:icon="@drawable/settings"
+        android:title="Account" />
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/safe_amigos"
         android:title="Home" />
     <item
-        android:id="@+id/navigation_account"
+        android:id="@+id/navigation_contacts"
         android:icon="@drawable/user"
-        android:title="Account" />
+        android:title="Contacts" />
 </menu>

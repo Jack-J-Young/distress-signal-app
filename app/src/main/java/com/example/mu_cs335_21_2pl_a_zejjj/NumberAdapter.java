@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mu_cs335_21_2pl_a_zejjj.fragments.AccountFragment;
+import com.example.mu_cs335_21_2pl_a_zejjj.fragments.ContactsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -69,7 +69,7 @@ public class NumberAdapter extends RecyclerView.Adapter<NumberAdapter.MyViewHold
                                     List<String> contacts = (List<String>) data.get("contacts");
                                     contacts.remove(position);
                                     FirebaseFirestore.getInstance().collection("users").document(uid).update("contacts", contacts);
-                                    AccountFragment frag = (AccountFragment) FragmentManager.findFragment(v);
+                                    ContactsFragment frag = (ContactsFragment) FragmentManager.findFragment(v);
                                     frag.updateList(v);
                                 }
                             }
