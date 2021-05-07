@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/circle_button"
-        android:backgroundTint="#632954"
+        android:backgroundTint="@color/primaryHigh"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="@+id/emergency_button"
         app:layout_constraintHorizontal_bias="0.485"
@@ -28,7 +28,7 @@
         android:background="@drawable/circle_button"
         android:onClick="emergencyButton"
         android:text="send_emergency"
-        app:backgroundTint="#632954"
+        app:backgroundTint="@color/primaryHigh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

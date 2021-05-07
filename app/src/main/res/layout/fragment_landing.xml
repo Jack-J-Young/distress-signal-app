@@ -7,8 +7,8 @@
     tools:context=".LandingFragment" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="339dp"
-        android:layout_height="514dp"
+        android:layout_width="350dp"
+        android:layout_height="580dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

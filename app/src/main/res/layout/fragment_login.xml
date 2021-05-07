@@ -6,23 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".fragments.LoginFragment">
 
-    <LinearLayout
-        android:layout_width="362dp"
-        android:layout_height="639dp"
-        android:orientation="horizontal"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="350dp"
+        android:layout_height="580dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <LinearLayout
-            android:layout_width="304dp"
+            android:id="@+id/linearLayout4"
+            android:layout_width="0dp"
             android:layout_height="486dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="100dp"
             android:background="#ffffff"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/space2">
 
             <EditText
                 android:id="@+id/enter_password"
@@ -103,13 +103,15 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginStart="-225dp"
-            android:layout_marginTop="20dp"
             android:background="@drawable/circle_button"
             android:backgroundTint="#ffffff"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -118,5 +120,15 @@
                 android:contentDescription="todo"
                 app:srcCompat="@drawable/safe_amigos" />
         </LinearLayout>
-    </LinearLayout>
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

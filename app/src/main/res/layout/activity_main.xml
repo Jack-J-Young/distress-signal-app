@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".MainActivity">
 
     <fragment
@@ -23,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:layout_weight="1"
-        android:background="#A67097"
+        android:background="@color/primaryHigh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
