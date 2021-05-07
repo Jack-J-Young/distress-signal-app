@@ -8,9 +8,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.mu_cs335_21_2pl_a_zejjj.classes.DBManager;
 import com.example.mu_cs335_21_2pl_a_zejjj.fragments.ContactsFragment;
@@ -18,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -89,49 +92,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void addxml(View v) {
-        //ConstraintLayout view = (ConstraintLayout) LayoutInflater.from(this).inflate(R.layout.fragment_account, null);
-
-        /*ConstraintLayout myButton = (ConstraintLayout) v.findViewById(R.id.ognumber);
-        ConstraintLayout numberContainer = new ConstraintLayout(this);
-        ViewGroup.LayoutParams lp = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT );
-        numberContainer.setLayoutParams(lp);
-        numberContainer.setBackgroundColor(0x11FF11);
-        numberContainer.setMinimumHeight(100);
-        numberContainer.setMinimumWidth(100);
-        LayoutInflater.from(getBaseContext()).inflate(R.layout.ognumber, null);*/
-
-        /* <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ognumber"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="#FFC9C9">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:onClick="addxml"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>*/
-        /*ConstraintLayout numberContainer = new ConstraintLayout(this);
-        //numberContainer.defa
-        numberContainer.setLayoutParams(new ConstraintLayout.LayoutParams(100, 100));
-        numberContainer.setBackgroundColor(0xFFC9C9);
-
-
-        LinearLayout mainView = (LinearLayout)this.findViewById(R.id.numberContainer);
-        mainView.addView(numberContainer);
-        mainView.invalidate();
-        Snackbar.make(v, mainView.getChildCount() + "", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();*/
-    }
-
     public void logout (View v) {
         FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MainActivity.this, landingActivity.class);
+        startActivity(intent);
     }
 
 }   
