@@ -32,6 +32,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_main" />
 
+
+    <Button
+
+        android:id="@+id/emergency_button"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="116dp"
+        android:background="@color/primaryMid"
+        android:text="sos"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        app:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
