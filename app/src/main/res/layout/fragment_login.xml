@@ -6,37 +6,117 @@
     android:layout_height="match_parent"
     tools:context=".fragments.LoginFragment">
 
-    <Button
-        android:id="@+id/Register_btna"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="registerNumber"
-        android:text="Register"
+    <LinearLayout
+        android:layout_width="362dp"
+        android:layout_height="639dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/phoneregis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:hint="Enter Phone No."
-        android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/Register_btna"
-        app:layout_constraintEnd_toEndOf="@+id/Register_btna"
-        app:layout_constraintStart_toStartOf="@+id/Register_btna" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:onClick="checkLogin"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/Register_btna"
-        app:layout_constraintStart_toStartOf="@+id/Register_btna"
-        app:layout_constraintTop_toBottomOf="@+id/Register_btna" />
+        <LinearLayout
+            android:layout_width="304dp"
+            android:layout_height="486dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/enter_password"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="250dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="Enter Password"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/password_text"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-90dp"
+                android:text="Password"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/enter_email_login"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-100dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="Enter Email"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/fpassword"
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="150dp"
+                android:text="Forget Password" />
+
+            <Button
+                android:id="@+id/loginbutton"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="215dp"
+                android:layout_marginTop="0dp"
+                android:onClick="login"
+                android:text="Login" />
+
+            <Button
+                android:id="@+id/regbutton"
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-50dp"
+                android:onClick="signup"
+                android:text="Register" />
+
+            <RadioButton
+                android:id="@+id/remember_me_button"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-150dp"
+                android:text="Remember Me" />
+
+            <TextView
+                android:id="@+id/username_text"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-240dp"
+                android:text="Email"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="-225dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/circle_button"
+            android:backgroundTint="#ffffff"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="todo"
+                app:srcCompat="@drawable/safe_amigos" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

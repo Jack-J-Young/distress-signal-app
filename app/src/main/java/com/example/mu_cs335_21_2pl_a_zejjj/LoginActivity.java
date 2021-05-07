@@ -111,8 +111,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void registerNumber(View v) {
-        rgPhone = (EditText) this.findViewById(R.id.phoneregis);
-        savedNumber = rgPhone.getText().toString().trim();
+        //rgPhone = (EditText) this.findViewById(R.id.phoneregis);
+        //savedNumber = rgPhone.getText().toString().trim();
+        savedNumber = "";
         try {
             startPhoneNumberVerification(savedNumber);
             Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_verifySMSFragment);

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_landing_page"
+    app:startDestination="@id/landingFragment">
+    <fragment
+        android:id="@+id/landingFragment"
+        android:name="com.example.mu_cs335_21_2pl_a_zejjj.LandingFragment"
+        android:label="fragment_landing"
+        tools:layout="@layout/fragment_landing" >
+        <action
+            android:id="@+id/action_landingFragment_to_userLogin"
+            app:destination="@id/userLogin" />
+        <action
+            android:id="@+id/action_landingFragment_to_userRegister"
+            app:destination="@id/userRegister" />
+    </fragment>
+    <activity
+        android:id="@+id/userLogin"
+        android:name="com.example.mu_cs335_21_2pl_a_zejjj.userLogin"
+        android:label="activity_user_login"
+        tools:layout="@layout/activity_user_login" />
+    <activity
+        android:id="@+id/userRegister"
+        android:name="com.example.mu_cs335_21_2pl_a_zejjj.userRegister"
+        android:label="activity_user_register"
+        tools:layout="@layout/activity_user_register" />
+</navigation>
