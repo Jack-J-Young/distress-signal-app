@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentNotifications">
+    tools:context=".fragments.AccountFragment">
 
     <ImageView
         android:id="@+id/user_image"
@@ -36,6 +36,8 @@
         android:layout_marginEnd="8dp"
         android:onClick="logout"
         android:text="Log out"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

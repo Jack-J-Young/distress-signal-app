@@ -21,20 +21,22 @@
         tools:targetApi="lollipop" />
 
     <Button
+
         android:id="@+id/emergency_button"
-        android:layout_width="135dp"
-        android:layout_height="135dp"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
         android:layout_marginTop="116dp"
-        android:background="@drawable/rounded_border_home"
+        android:background="@color/primaryMid"
         android:onClick="emergencyButton"
-        android:text="send_emergency"
+        android:text="sos"
+        android:textAllCaps="true"
         android:textColor="@color/black"
+        android:textSize="36sp"
         app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-    />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/enter_Phone"

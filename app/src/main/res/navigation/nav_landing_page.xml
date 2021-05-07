@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_landingFragment_to_userRegister"
             app:destination="@id/userRegister" />
+        <action
+            android:id="@+id/action_landingFragment_to_mainActivity2"
+            app:destination="@id/mainActivity2" />
     </fragment>
     <activity
         android:id="@+id/userLogin"
@@ -26,4 +29,9 @@
         android:name="com.example.mu_cs335_21_2pl_a_zejjj.userRegister"
         android:label="activity_user_register"
         tools:layout="@layout/activity_user_register" />
+    <activity
+        android:id="@+id/mainActivity2"
+        android:name="com.example.mu_cs335_21_2pl_a_zejjj.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>

@@ -58,22 +58,25 @@
                 android:hint="Enter Email"
                 android:inputType="textPersonName" />
 
+
             <Button
                 android:id="@+id/fpassword"
                 android:layout_width="190dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="150dp"
-                android:text="Forget Password" />
+                android:layout_marginTop="200dp"
+                android:text="Forget Password"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/loginbutton"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="215dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="-100dp"
                 android:onClick="login"
-                android:text="Login" />
+                android:text="Login"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/regbutton"
@@ -82,14 +85,15 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="-50dp"
                 android:onClick="signup"
-                android:text="Register" />
+                android:text="Register"
+                android:textColor="@color/white"/>
 
             <RadioButton
                 android:id="@+id/remember_me_button"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="-150dp"
+                android:layout_marginTop="-80dp"
                 android:text="Remember Me" />
 
             <TextView
