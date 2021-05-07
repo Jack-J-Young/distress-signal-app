@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_account"
-        android:name="com.example.mu_cs335_21_2pl_a_zejjj.FragmentNotifications"
+        android:name="com.example.mu_cs335_21_2pl_a_zejjj.fragments.AccountFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_account" />
     <fragment

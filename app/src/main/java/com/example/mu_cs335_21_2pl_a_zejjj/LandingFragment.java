@@ -3,10 +3,14 @@ package com.example.mu_cs335_21_2pl_a_zejjj;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +62,13 @@ public class LandingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_landing, container, false);
+
+        /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            Navigation.findNavController(getView()).navigate(R.id.action_landingFragment_to_mainActivity2);
+        }*/
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_landing, container, false);
+        return v;
     }
 }
