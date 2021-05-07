@@ -7,7 +7,7 @@
 
     // the inside color
     <solid
-        android:color="@color/black"
+        android:color="@color/white"
         />
 
     // The desired corner radius. reduce it to keep it less rounded

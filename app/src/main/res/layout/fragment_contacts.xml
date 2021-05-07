@@ -14,6 +14,7 @@
         android:layout_marginTop="128dp"
         android:ems="10"
         android:hint="Enter contact"
+        android:textColor="@color/black"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,21 +26,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:onClick="debugDB"
-        android:text="Register phone"
+        android:text="Add Conatct"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/addcontact"
         app:layout_constraintStart_toStartOf="@+id/addcontact"
         app:layout_constraintTop_toBottomOf="@+id/addcontact" />
-
-    <Button
-        android:id="@+id/logout_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:onClick="logout"
-        android:text="Log out"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/phoneScroll"
