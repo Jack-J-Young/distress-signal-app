@@ -13,7 +13,7 @@
         android:layout_marginTop="100dp"
         android:background="@drawable/circle_button"
         android:backgroundTint="@color/primaryHigh"
-        android:textColor="#ffffff"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/emergency_button"
         app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="@+id/emergency_button"
@@ -25,13 +25,16 @@
         android:layout_width="135dp"
         android:layout_height="135dp"
         android:layout_marginTop="116dp"
-        android:background="@drawable/circle_button"
+        android:background="@drawable/rounded_border_home"
         android:onClick="emergencyButton"
         android:text="send_emergency"
-        app:backgroundTint="@color/primaryHigh"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+
+    />
 
     <EditText
         android:id="@+id/enter_Phone"
