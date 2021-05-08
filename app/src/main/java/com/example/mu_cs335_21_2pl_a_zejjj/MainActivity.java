@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        btSend.setOnClickListener(new View.OnClickListener() {
+        /*btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Check condition
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-        });
+        });*/
 
 
         BottomNavigationView navView = findViewById(R.id.nav_home);
@@ -120,6 +120,20 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+    }
+
+    public void sos(View v) {
+        if(ContextCompat.checkSelfPermission(MainActivity.this, permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
+            //When permission is granted
+            //Create Method
+
+            sendMessage();
+        }
+        else{
+            //When permission is not granted
+            //Request Permission
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS}, 100);
+        }
     }
 
     public void debugDB(View v) {
