@@ -42,55 +42,18 @@ public class userRegister extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_register);
-
-        /*//mDisplayDate = (TextView) findViewById(R.id.select_dob);
-
-        mDisplayDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        userRegister.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        onDateSetListener,
-                        year, month, day);
-                dialog.getWindow().setBackgroundDrawable((new ColorDrawable(Color.TRANSPARENT)));
-                dialog.show();
-            }
-        });
-
-        onDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month + 1;
-                Log.d(TAG, "onDate: dd/mm/yyyy: " + dayOfMonth + "/" + month + "/" + year);
-                String date = dayOfMonth + "/" + month + "/" + year;
-                mDisplayDate.setText(date);
-            }
-        };
-
-        //linking to authentication_code
-        register = findViewById(R.id.register);
-
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(userRegister.this, authnticationCode.class));
-            }
-        });*/
     }
 
     public void register(View v) {
+        // get user details
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String first_name = ((EditText) this.findViewById(R.id.enter_fname)).getText().toString().trim();
         String surname = ((EditText) this.findViewById(R.id.enter_sname)).getText().toString().trim();
         String email = ((EditText) this.findViewById(R.id.enter_email)).getText().toString().trim();
         String password = ((EditText) this.findViewById(R.id.enter_password)).getText().toString().trim();
         String gender = /*((EditText) this.findViewById(R.id.enter_gender)).getText().toString().trim()*/ "WIP";
+
+        // log user into firebase auth
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener() {
 
             @Override
@@ -100,6 +63,7 @@ public class userRegister extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                // add extra user data to the db
                                 addUserInfo(first_name, surname, email, gender);
                             }
                         }
@@ -109,8 +73,10 @@ public class userRegister extends AppCompatActivity {
         });
     }
 
+    /* addUserInfo: adds extra info into db */
     private void addUserInfo(String first_name, String surname, String email, String gender) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        // get uid
         String uid = "";
         try {
             uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -119,6 +85,7 @@ public class userRegister extends AppCompatActivity {
         }
         DocumentReference document = db.collection("users").document(uid);
 
+        // create user document
         Map<String, Object> data = new HashMap<>();
         data.put("uid", uid);
         data.put("first_name", first_name);
@@ -127,6 +94,7 @@ public class userRegister extends AppCompatActivity {
         data.put("gender", gender);
         data.put("contacts", new LinkedList<String>());
 
+        // set document in db
         document.set(data);
     }
 

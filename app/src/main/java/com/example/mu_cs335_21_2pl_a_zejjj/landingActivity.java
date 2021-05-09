@@ -17,16 +17,19 @@ public class landingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        // if the user is logged in bring directly to home page (ease of access)
         if (user != null) {
             Intent intent = new Intent(landingActivity.this, MainActivity.class);
             startActivity(intent);
         }
     }
 
+    // login button function
     public void login(View v) {
         Navigation.findNavController(v).navigate(R.id.action_landingFragment_to_userLogin);
     }
 
+    // sign up button function
     public void signup(View v) {
         Navigation.findNavController(v).navigate(R.id.action_landingFragment_to_userRegister);
     }

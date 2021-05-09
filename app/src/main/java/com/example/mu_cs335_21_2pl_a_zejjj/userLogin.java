@@ -25,20 +25,25 @@ public class userLogin extends AppCompatActivity {
         setContentView(R.layout.activity_user_login);
     }
 
+    // nav method
     public void signup(View v) {
         Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_userRegister2);
     }
 
+    // logs user in with info from firebase auth
     public void login(View v) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
+        // get login details
         String email = ((EditText) this.findViewById(R.id.enter_email_login)).getText().toString().trim();
         String password = ((EditText) this.findViewById(R.id.enter_password)).getText().toString().trim();
 
+        // sign in
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    // if logged in move to main page
                     Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_mainActivity);
                 }
             }

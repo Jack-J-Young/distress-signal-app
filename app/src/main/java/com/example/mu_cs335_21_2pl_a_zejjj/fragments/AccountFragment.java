@@ -87,21 +87,27 @@ public class AccountFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_account, container, false);
 
-
+        // get the username and profile picture objects
         ImageView user_icon = v.findViewById(R.id.user_image);
         TextView user_name = v.findViewById(R.id.name_container);
 
+        // get the logged in user details
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        user_name.setText("Login to access user data");
+
+        // check if the user is logged in
         if (user == null) {
+            // change name to "Login to access user data"
             user_icon.setImageResource(R.drawable.common_google_signin_btn_icon_dark_normal);
             user_name.setText("Login to access user data");
         } else {
+            // temporarily change name to "..." to show its loading
             user_icon.setImageResource(R.drawable.common_google_signin_btn_icon_light_normal);
             user_name.setText("...");
 
+            // Query the db with the user id and get their first and last name and set the container to that
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             String uid = "";
+            // get uid
             try {
                 uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             } catch (Exception e) {
@@ -113,6 +119,7 @@ public class AccountFragment extends Fragment {
             document.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    // get uid
                     String uid = "";
                     try {
                         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();

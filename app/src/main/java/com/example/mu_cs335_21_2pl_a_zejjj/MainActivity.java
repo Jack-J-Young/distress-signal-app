@@ -83,45 +83,16 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission.ACCESS_FINE_LOCATION}, 100);
         }
 
-
-
-
-
-
-
-
-
-        /*btSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Check condition
-                if(ContextCompat.checkSelfPermission(MainActivity.this, permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
-                    //When permission is granted
-                    //Create Method
-
-                    sendMessage();
-                }
-                else{
-                    //When permission is not granted
-                    //Request Permission
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.SEND_SMS}, 100);
-                }
-
-            }
-
-
-        });*/
-
-
+        // Setup nav bar for main activity
         BottomNavigationView navView = findViewById(R.id.nav_home);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_account, R.id.navigation_home, R.id.navigation_contacts)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+    /* sos: used to active send method, also enables sms permissions */
     public void sos(View v) {
         if(ContextCompat.checkSelfPermission(MainActivity.this, permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
             //When permission is granted
@@ -136,8 +107,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /* debugDB: gets entered contact and adds it to database */
     public void debugDB(View v) {
         DBManager db = new DBManager(FirebaseFirestore.getInstance(), "users");
+        // get uid
         String uid = "";
         try {
             uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -146,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         }
         DocumentReference document = db.db.collection("users").document(uid);
 
-
+        // query db to get current user info, if user info doesnt exist create it
         document.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -166,10 +139,16 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         Map<String, Object> data = snap_document.getData();
                         if (data.containsKey("contacts")) {
+                            // get contacts
                             List<String> contacts = (List<String>) data.get("contacts");
+                            // get inputted number
                             String number = ((EditText) findViewById(R.id.addcontact)).getText().toString().trim();
+                            // adds number to contacts
                             contacts.add(number);
+                            // update db with new list
                             db.db.collection("users").document(uid).update("contacts", contacts);
+
+                            // update the recycle view in fragment
                             ContactsFragment frag = (ContactsFragment) FragmentManager.findFragment(v);
                             frag.updateList(v);
                         }
@@ -179,17 +158,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /* logout: signs user out and sends to login page */
     public void logout (View v) {
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(MainActivity.this, landingActivity.class);
         startActivity(intent);
     }
 
+    /* sendMessage: sends gps location to all contacts */
     private void sendMessage(){
+        // get location
         gps.getLocation();
         latitude = gps.getLatitude();
         longitude = gps.getLongitude();
 
+        // get uid and create ref
         DBManager db = new DBManager(FirebaseFirestore.getInstance(), "users");
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference document = db.db.collection("users").document(uid);
@@ -201,9 +184,11 @@ public class MainActivity extends AppCompatActivity {
                     if (snap_document.exists()) {
                         Map<String, Object> data = snap_document.getData();
                         List<String> contacts = (List<String>)data.get("contacts");
+                        // get contacts to loop and name for msg formatting
                         String fname = (String)data.get("first_name");
                         String lname = (String)data.get("surname");
 
+                        // send location and info to call contacts
                         for (int i = 0; i < contacts.size(); i++) {
                             String phone = contacts.get(i).trim();
 

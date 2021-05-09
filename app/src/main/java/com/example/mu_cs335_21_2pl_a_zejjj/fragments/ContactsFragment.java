@@ -81,6 +81,8 @@ public class ContactsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_contacts, container, false);
         // Inflate the layout for this fragment
+
+        // setup objects for recycle view for the contacts
         rv = v.findViewById(R.id.rv_1);
         rv.setHasFixedSize(true);
 
@@ -88,6 +90,7 @@ public class ContactsFragment extends Fragment {
 
         rv.setLayoutManager(lm);
 
+        // get uid
         String uid = "";
         try {
             uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -96,6 +99,7 @@ public class ContactsFragment extends Fragment {
         }
         DocumentReference document = FirebaseFirestore.getInstance().collection("users").document(uid);
 
+        //query db for logged in users contacts
         document.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -111,6 +115,7 @@ public class ContactsFragment extends Fragment {
                         Map<String, Object> data = snap_document.getData();
                         if (data.containsKey("contacts")) {
                             List<String> contacts = (List<String>) data.get("contacts");
+                            // add the contacts to the recycle view
                             na = new NumberAdapter(contacts);
                             rv.setAdapter(na);
 
@@ -123,7 +128,9 @@ public class ContactsFragment extends Fragment {
         return v;
     }
 
+    /* updateList: update the recycle view with new user data */
     public void updateList(View v) {
+        // get uid
         String uid = "";
         try {
             uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -135,6 +142,7 @@ public class ContactsFragment extends Fragment {
         document.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                // get uid
                 String uid = "";
                 try {
                     uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -147,6 +155,7 @@ public class ContactsFragment extends Fragment {
                         Map<String, Object> data = snap_document.getData();
                         if (data.containsKey("contacts")) {
                             List<String> contacts = (List<String>) data.get("contacts");
+                            // set recycle view to the contacts
                             na = new NumberAdapter(contacts);
                             rv.setAdapter(na);
 

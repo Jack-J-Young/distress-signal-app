@@ -11,6 +11,8 @@ public class authnticationCode extends AppCompatActivity {
 
     Button submitAuth;
 
+    /* NOT USED */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

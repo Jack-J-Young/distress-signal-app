@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 import java.util.Map;
 
+/* NumberAdapter: adapter for recycle view */
 public class NumberAdapter extends RecyclerView.Adapter<NumberAdapter.MyViewHolder> {
     List<String> numbers;
 
@@ -39,11 +40,15 @@ public class NumberAdapter extends RecyclerView.Adapter<NumberAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        // adds image and changes text
         holder.image.setImageResource(R.drawable.common_google_signin_btn_icon_dark);
         holder.text.setText(numbers.get(position));
+
+        // add onclick to remove number
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // get uid
                 String uid = "";
                 try {
                     uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -52,9 +57,11 @@ public class NumberAdapter extends RecyclerView.Adapter<NumberAdapter.MyViewHold
                 }
                 DocumentReference document = FirebaseFirestore.getInstance().collection("users").document(uid);
 
+                // query db
                 document.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        // get uid
                         String uid = "";
                         try {
                             uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -67,8 +74,10 @@ public class NumberAdapter extends RecyclerView.Adapter<NumberAdapter.MyViewHold
                                 Map<String, Object> data = snap_document.getData();
                                 if (data.containsKey("contacts")) {
                                     List<String> contacts = (List<String>) data.get("contacts");
+                                    // remove contact at position in recycle view
                                     contacts.remove(position);
                                     FirebaseFirestore.getInstance().collection("users").document(uid).update("contacts", contacts);
+                                    // update and update contacts in fragment
                                     ContactsFragment frag = (ContactsFragment) FragmentManager.findFragment(v);
                                     frag.updateList(v);
                                 }
