@@ -4,39 +4,140 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".fragments.LoginFragment">
 
-    <Button
-        android:id="@+id/Register_btna"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="registerNumber"
-        android:text="Register"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="350dp"
+        android:layout_height="580dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/phoneregis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:hint="Enter Phone No."
-        android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/Register_btna"
-        app:layout_constraintEnd_toEndOf="@+id/Register_btna"
-        app:layout_constraintStart_toStartOf="@+id/Register_btna" />
+        <LinearLayout
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:onClick="checkLogin"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/Register_btna"
-        app:layout_constraintStart_toStartOf="@+id/Register_btna"
-        app:layout_constraintTop_toBottomOf="@+id/Register_btna" />
+            android:id="@+id/linearLayout4"
+            android:layout_width="0dp"
+            android:layout_height="486dp"
+            android:background="@drawable/rounded_border_home"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/space2">
+
+            <EditText
+                android:id="@+id/enter_password"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="250dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="Enter Password"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/password_text"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-90dp"
+                android:text="Password"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/enter_email_login"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-100dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="Enter Email"
+                android:inputType="textPersonName" />
+
+
+            <Button
+                android:id="@+id/fpassword"
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="200dp"
+                android:text="Forget Password"
+                android:textSize="12sp"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/loginbutton"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="215dp"
+                android:layout_marginTop="-100dp"
+                android:onClick="login"
+                android:text="Login"
+                android:textSize="12sp"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/regbutton"
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-50dp"
+                android:onClick="signup"
+                android:text="Register"
+                android:textSize="12sp"
+                android:textColor="@color/white"/>
+
+            <RadioButton
+                android:id="@+id/remember_me_button"
+                android:layout_width="150dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-80dp"
+                android:text="Remember Me" />
+
+            <TextView
+                android:id="@+id/username_text"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="-240dp"
+                android:text="Email"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/circle_button"
+            android:backgroundTint="#ffffff"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="todo"
+                app:srcCompat="@drawable/safe_amigos" />
+        </LinearLayout>
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

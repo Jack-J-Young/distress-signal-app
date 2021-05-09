@@ -6,19 +6,19 @@
     app:startDestination="@id/navigation_home">
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.mu_cs335_21_2pl_a_zejjj.FragmentNotifications"
+        android:id="@+id/navigation_account"
+        android:name="com.example.mu_cs335_21_2pl_a_zejjj.fragments.AccountFragment"
         android:label="fragment_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.mu_cs335_21_2pl_a_zejjj.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/navigation_account"
-        android:name="com.example.mu_cs335_21_2pl_a_zejjj.fragments.AccountFragment"
+        android:id="@+id/navigation_contacts"
+        android:name="com.example.mu_cs335_21_2pl_a_zejjj.fragments.ContactsFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_contacts" />
 
 </navigation>

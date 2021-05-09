@@ -105,14 +105,15 @@ public class LoginActivity extends AppCompatActivity {
 
     public void checkLogin(View v) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
+        //if (user != null) {
             Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_mainActivity);
-        }
+        //}
     }
 
     public void registerNumber(View v) {
-        rgPhone = (EditText) this.findViewById(R.id.phoneregis);
-        savedNumber = rgPhone.getText().toString().trim();
+        //rgPhone = (EditText) this.findViewById(R.id.phoneregis);
+        //savedNumber = rgPhone.getText().toString().trim();
+        savedNumber = "";
         try {
             startPhoneNumberVerification(savedNumber);
             Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_verifySMSFragment);
@@ -124,8 +125,13 @@ public class LoginActivity extends AppCompatActivity {
 
     public void checkSMS(View v) {
         EditText rgSMS = (EditText) this.findViewById(R.id.smsregis);
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, rgSMS.getText().toString().trim());
-        signInWithPhoneAuthCredential(credential);
+        try {
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, rgSMS.getText().toString().trim());
+            signInWithPhoneAuthCredential(credential);
+        } catch (Exception e) {
+            Snackbar.make(v, "Enter a valid code", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
         Navigation.findNavController(v).navigate(R.id.action_verifySMSFragment_to_mainActivity);
     }
 

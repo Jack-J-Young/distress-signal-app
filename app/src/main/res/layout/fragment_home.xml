@@ -12,8 +12,8 @@
         android:layout_height="100dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/circle_button"
-        android:backgroundTint="#632954"
-        android:textColor="#ffffff"
+        android:backgroundTint="@color/primaryHigh"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/emergency_button"
         app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="@+id/emergency_button"
@@ -21,28 +21,23 @@
         tools:targetApi="lollipop" />
 
     <Button
+
         android:id="@+id/emergency_button"
-        android:layout_width="135dp"
-        android:layout_height="135dp"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
         android:layout_marginTop="116dp"
-        android:background="@drawable/circle_button"
-        android:onClick="emergencyButton"
-        android:text="send_emergency"
-        app:backgroundTint="#632954"
+        android:background="@color/primaryMid"
+        android:onClick="sos"
+        android:text="sos"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/enter_Phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter number"
-        android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/switch2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emergency_button" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
