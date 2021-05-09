@@ -201,10 +201,13 @@ public class MainActivity extends AppCompatActivity {
                     if (snap_document.exists()) {
                         Map<String, Object> data = snap_document.getData();
                         List<String> contacts = (List<String>)data.get("contacts");
+                        String fname = (String)data.get("first_name");
+                        String lname = (String)data.get("surname");
+
                         for (int i = 0; i < contacts.size(); i++) {
                             String phone = contacts.get(i).trim();
 
-                            String sMessage = "Testing, My Location is: http://maps.google.com/?q=" + latitude + "," + longitude;
+                            String sMessage = fname + " " + lname + "\n M \n My Location is: http://maps.google.com/?q=" + latitude + "," + longitude;
 
                             //Check Condition
                             if (!phone.equals("")) {
